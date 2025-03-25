@@ -1,4 +1,4 @@
-# Projecct2
+# Project2
 
 # Tinytroupe Deliverable1
 
