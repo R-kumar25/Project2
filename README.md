@@ -21,12 +21,16 @@ With the rise of LLMs like GPT-4 and beyond, the definition of the Turing Test h
 # Question 3: Create a simulation of your own topic and show me the transcript. This implies define at least two personas of your own choice with conflict built in and observe their conversation. You can simply copy/paste the conversation in a .md file. Please comment on the transcript whether you think the Turing Test is passed.
 
 >>> lisa_ds = create_lisa_the_data_scientist() # instantiate a Lisa from the example builder
+
 >>> lisa_ds.listen_and_act("Tell me about your life.")
+
 USER --> Lisa Carter: [CONVERSATION] 
           > Tell me about your life.
+
 Lisa Carter acts: [THINK] 
                  > The question is about my life, which includes my background, education, work, and
                  > personal interests. I should provide a concise yet informative overview.
+
 Lisa Carter acts: [TALK] 
                  > Sure! I grew up in Vancouver, Canada, in a tech-savvy family. I pursued a
                  > Master's in Data Science at the University of Toronto, where I focused on
@@ -34,36 +38,59 @@ Lisa Carter acts: [TALK]
                  > Scientist at Microsoft in the M365 Search team, analyzing user behavior to
                  > enhance search results. I love learning about AI and machine learning, and in my
                  > free time, I enjoy cooking, playing the piano, and watching movies.
+
 Lisa Carter acts: [DONE] 
 
 >>> from tinytroupe.agent import TinyPerson
+
 >>> from tinytroupe.environment import TinyWorld
 >>> 
+
 >>> # Create the second persona (Sam Altman)
+
 >>> sam_altman = TinyPerson("Sam Altman")
+
 >>> sam_altman.define("age", 38)  # Adjust the age as needed
+
 >>> sam_altman.define("nationality", "American")
+
 >>> sam_altman.define("occupation", "Sam Altman is an American entrepreneur and investor. He is the CEO of OpenAI, the organization behind the development of AI models like GPT-3 and GPT-4. Prior to OpenAI, he was the president of Y Combinator, a startup accelerator. He is also known for his investments in numerous successful startups and his deep involvement in technology and artificial intelligence.")
+
 >>> 
 >>> # Create the third persona (Robin)
+
 >>> robin = TinyPerson("Robin")
+
 >>> robin.define("age", 22)
+
 >>> robin.define("nationality", "American")
+
 >>> robin.define("occupation", "He is an AI researcher dedicated to pushing the boundaries of artificial intelligence and machine learning.")
 >>> 
+
 >>> # Set up the world with Sam Altman and Robin
+
 >>> world = TinyWorld("Classroom", [sam_altman, robin])
+
 >>> 
 >>> # Make everyone in the world accessible
+
 >>> world.make_everyone_accessible()
+
 >>> 
 >>> # Start a conversation with Sam Altman
+
 >>> sam_altman.listen("Can you share some advice on getting started in AI?")
+
 USER --> Sam Altman: [CONVERSATION] 
+
           > Can you share some advice on getting started in AI?
+
 TinyPerson(name='Sam Altman')
 >>> 
+
 >>> # Run the conversation for 3 rounds
+
 >>> world.run(3)
 ```
 
